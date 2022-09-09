@@ -45,6 +45,8 @@ console.log('data', data)
 
 const RobotVisx = () => {
   return (
+    <>
+    <div>Visx</div>
     <div style={{border: '2px solid grey'}}>
         <svg width={width} height={height}>
         {data.map((letter, frequency) => {
@@ -57,12 +59,13 @@ const RobotVisx = () => {
                         height={barHeight}
                         width={xScale.bandwidth()}
                         fill="#fc2e1c"
-                    />
+                        />
                 </Group>
         );
-        })}
+    })}
         </svg>
     </div>
+    </>
   )
 }
 

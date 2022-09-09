@@ -15,28 +15,28 @@ const RobotChart = () => {
         data: robots.map((robot) => robot.successRate),
         borderWidth: 1,
         backgroundColor: [
-            'rgba(255, 99, 132, 0.9)',
+            '#4CAF50',
         ],
     }, {
         label: 'Total runs',
         data: robots.map((robot) => robot.totalRuntime),
         borderWidth: 1,
         backgroundColor: [
-            'rgba(120, 10, 23, 0.9)',
+            '#00DBDE',
         ],
     }, {
         label: 'Average coverage',
         data: robots.map((robot) => robot.avgCoverage),
         borderWidth: 1,
         backgroundColor: [
-            'rgba(10, 10, 256, 0.9)',
+            '#4CAF50',
         ],
     }, {
         label: 'distance from home traveled',
         data: robots.map((robot) => robot.distanceFromHome),
         borderWidth: 1,
         backgroundColor: [
-            'rgba(10, 120, 50, 0.9)',
+            '#690BB4',
         ],
     }],
     options: {
