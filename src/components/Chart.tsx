@@ -1,11 +1,10 @@
 import React from 'react'
 import 'chart.js/auto';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
-import RobotRunDetails from '../mockdata/robotRuns.js';
 import robots from '../mockdata/robotsData.js';
 
 
-const RobotRunDetailsChart = () => {
+const RobotChart = () => {
     // console.log('RobotRunDetails', RobotRunDetails)
 
 
@@ -49,8 +48,6 @@ const RobotRunDetailsChart = () => {
     }
   }
 
-
-console.log('robotsData', robotsData)
   return (  
       <div style={{width: '40vw', height: '40vh'}}>
         <div>Chart</div>
@@ -59,4 +56,4 @@ console.log('robotsData', robotsData)
   )
 }
 
-export default RobotRunDetailsChart
+export default RobotChart

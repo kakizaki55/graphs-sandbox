@@ -40,25 +40,29 @@ const yPoint = compose(yScale, y);
 
 // Finally we'll embed it all in an SVG
 
+console.log('data', data)
+
 
 const RobotVisx = () => {
   return (
-    <svg width={width} height={height}>
-    {data.map((d, i) => {
-      const barHeight = yMax - yPoint(d);
-      return (
-        <Group key={`bar-${i}`}>
-          <Bar
-            x={xPoint(d)}
-            y={yMax - barHeight}
-            height={barHeight}
-            width={xScale.bandwidth()}
-            fill="#fc2e1c"
-          />
-        </Group>
-      );
-    })}
-  </svg>
+    <div style={{border: '2px solid grey'}}>
+        <svg width={width} height={height}>
+        {data.map((letter, frequency) => {
+            const barHeight = yMax - yPoint(letter);
+            return (
+                <Group key={`bar-${frequency}`}>
+                    <Bar 
+                        x={xPoint(letter)}
+                        y={yMax - barHeight}
+                        height={barHeight}
+                        width={xScale.bandwidth()}
+                        fill="#fc2e1c"
+                    />
+                </Group>
+        );
+        })}
+        </svg>
+    </div>
   )
 }
 

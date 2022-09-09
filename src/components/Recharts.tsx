@@ -1,18 +1,34 @@
 import React from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
-const data = [{name: 'Page A', uv: 400, pv: 2400, amt: 2400}];
+import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar } from 'recharts';
+import robots from '../mockdata/robotsData';
+
+const data = robots.map((robot) => { 
+
+ return {
+    "name": robot.robotName,
+    "Success Rate": robot.successRate,
+    "distance from home traveled": robot.distanceFromHome,
+    "Total run time": robot.totalRuntime,
+  }
+})
+const runtime = data[0]['Total run time']
+console.log('data',typeof runtime , data)
 
 
 export default function RobotRecharts() {
   return (
     <>
         <div>Recharts</div>
-        <LineChart width={600} height={300} data={data}>
-            <Line type='basis' dataKey="uv" stroke="#8884d8" />
-            <CartesianGrid stroke="#ccc" />
+        <BarChart width={600} height={300} data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
-        </LineChart>
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Success Rate" fill="#8884d8" />
+            <Bar dataKey="distance from home traveled" fill="#82ca9d" />
+            <Bar dataKey="Total run time" fill="#8f22dd" />
+        </BarChart>
     </>
   )
 }

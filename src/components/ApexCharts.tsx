@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactApexChart from "react-apexcharts";
+import robots from '../mockdata/robotsData';
 
 const RobotApexCharts = () => {
-
-  
 
   const chartData = {
     options: {
@@ -12,7 +11,7 @@ const RobotApexCharts = () => {
         id: 'apexchart-example',
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+        categories: robots.map((robot) => robot.robotName)
       },
       fill: {
         type: 'gradient',
@@ -35,13 +34,21 @@ const RobotApexCharts = () => {
       },
     },
     series: [{
-      name: 'Distance Traveled',
+      name: 'Average coverage ',
       type: 'column',
-      data: [440, 505, 414, 571, 227, 413, 201, 352, 652, 320, 257, 160]
+      data: robots.map((robot) => robot.avgCoverage)
     }, {
-      name: 'Time Traveled',
-      type: 'line',
-      data: [23, 42, 35, 27, 43, 22, 17, 31, 42, 22, 12, 16]
+      name: 'Success rate',
+      type: 'column',
+      data: robots.map((robot) => robot.successRate)
+    }, {
+      name: 'distance from home',
+      type: 'column',
+      data: robots.map((robot) => robot.distanceFromHome)
+    }, {
+      name: 'total runtime',
+      type: 'column',
+      data: robots.map((robot) => robot.totalRuntime)
     }],
   }
 
