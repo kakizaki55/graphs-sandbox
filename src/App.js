@@ -2,6 +2,7 @@ import './App.css';
 import RobotApexCharts from './components/ApexCharts.tsx';
 import RobotRunDetailsChart from './components/Chart.tsx';
 import RobotRecharts from './components/Recharts.tsx';
+import RobotVisx from './components/Visx.tsx';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <RobotApexCharts/>
       </div>
       <RobotRecharts/>
+      <RobotVisx/>
     </div>
   );
 }
