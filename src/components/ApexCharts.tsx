@@ -54,14 +54,17 @@ const RobotApexCharts = () => {
 
 
   return (
-    
-  <>
+  <div>
     <div>ApexChart</div>
-    <ReactApexChart 
-      options={chartData.options} 
-      series={chartData.series} 
-      type="line" ></ReactApexChart>
-  </>
+      <ReactApexChart 
+        options={chartData.options} 
+        series={chartData.series} 
+        type="line" />
+      <ReactApexChart 
+        options={chartData.options} 
+        series={chartData.series} 
+        type="bar" />
+  </div>
   )
 }
 

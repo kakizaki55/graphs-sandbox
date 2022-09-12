@@ -7,7 +7,6 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5percent from "@amcharts/amcharts5/percent";
 
 const RobotAmCharts = () =>  {
-  //const chart = useRef(null);
   const chartID = "pie-two"
   console.log({ chartID });
 

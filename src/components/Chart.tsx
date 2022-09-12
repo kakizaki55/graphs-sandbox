@@ -1,6 +1,6 @@
 import React from 'react'
 import 'chart.js/auto';
-import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import { Bar, Line, Doughnut, PolarArea, Radar} from 'react-chartjs-2';
 import robots from '../mockdata/robotsData.js';
 
 
@@ -51,7 +51,13 @@ const RobotChart = () => {
   return (  
       <div style={{width: '40vw', height: '40vh'}}>
         <div>Chart</div>
-        <Bar data={{...robotsData}}></Bar>
+        <div style={{ display:'flex', flexDirection: 'row'}}>
+            <Bar data={{...robotsData}}></Bar>
+            <Line data={robotsData}></Line>
+            <Doughnut data={{...robotsData}}></Doughnut>
+            <PolarArea data={robotsData}></PolarArea>
+            <Radar data={robotsData}></Radar>
+        </div>
     </div>
   )
 }
