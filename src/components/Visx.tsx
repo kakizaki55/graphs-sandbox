@@ -65,8 +65,8 @@ const RobotVisx = () => {
         {data.map((name, avgCoverage, successRate) => {
             const barHeight = yMax - yPoint(name);
             return (
-              <>
-                <Group key={`bar-${avgCoverage}`}>
+              <div key={`bar-${avgCoverage}`}>
+                <Group >
                     <Bar 
                         x={xPoint(name)}
                         y={yMax - barHeight}
@@ -84,7 +84,7 @@ const RobotVisx = () => {
                         fill="pink"
                         />
                 </Group>
-              </>
+              </div >
         );
     })}
         </svg>

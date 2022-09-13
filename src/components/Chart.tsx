@@ -1,12 +1,12 @@
 import React from 'react'
 import 'chart.js/auto';
-import { Bar, Line, Doughnut, PolarArea, Radar} from 'react-chartjs-2';
+import { Bar, Line, Doughnut, PolarArea, Radar } from 'react-chartjs-2';
 import robots from '../mockdata/robotsData.js';
+import RobotRunDetails from '../mockdata/robotRuns.js'
+
 
 
 const RobotChart = () => {
-    // console.log('RobotRunDetails', RobotRunDetails)
-
 
   const robotsData = {
     labels: robots.map((robot) => robot.robotName), 
@@ -34,7 +34,7 @@ const RobotChart = () => {
     }, {
         label: 'distance from home traveled',
         data: robots.map((robot) => robot.distanceFromHome),
-        borderWidth: 1,
+        borderWidth: 2,
         backgroundColor: [
             '#690BB4',
         ],
@@ -48,16 +48,31 @@ const RobotChart = () => {
     }
   }
 
+const robotsRunData = {
+    labels: RobotRunDetails.runs.map((run) => Object.keys(run.coverageAreaTimeData)), 
+    datasets: RobotRunDetails.runs.map((run) => {
+        return {
+            label: run.id,
+            data: run.coverageAreaTimeData, 
+            backgroundColor: [
+                '#690BB4',
+            ],
+        }
+     })
+}
+
+
   return (  
       <div style={{width: '40vw', height: '40vh'}}>
         <div>Chart</div>
         <div style={{ display:'flex', flexDirection: 'row'}}>
             <Bar data={{...robotsData}}></Bar>
+            <Line data={robotsRunData}></Line>
             <Line data={robotsData}></Line>
             <Doughnut data={{...robotsData}}></Doughnut>
             <PolarArea data={robotsData}></PolarArea>
             <Radar data={robotsData}></Radar>
-        </div>
+        </div>  
     </div>
   )
 }
