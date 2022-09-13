@@ -82,32 +82,14 @@ const RobotHighCharts = () => {
         data: robots.map((robot) => robot.totalRuntime)
       }, 
     ]
-  }
+  } 
 
-  const options4 = { 
-    chart: {
-      type: 'line'
-    },
-    title: {
-      text: 'High'
-    }, 
-    series: [{
-      type: 'bellcurve',
-      xAxis: 1,
-      yAxis: 1,
-      baseSeries: index
-  }, {
-      data: [3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4]
-  }]
-  }
-
-
+  
   return (
     <div style={{display:'flex', flexDirection:'row'}}>  
         <HighchartsReact highcharts={Highcharts} options={options1} />
         <HighchartsReact highcharts={Highcharts} options={options2} />
         <HighchartsReact highcharts={Highcharts} options={options3} />
-        <HighchartsReact highcharts={Highcharts} options={options4} />
     </div>
   )
 }
