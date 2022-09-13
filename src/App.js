@@ -4,6 +4,7 @@ import RobotChart from './components/Chart.tsx';
 import RobotRecharts from './components/Recharts.tsx';
 import RobotVisx from './components/Visx.tsx';
 import RobotHighCharts from './components/HighCharts.tsx';
+import VisxBarGraph from './components/VisxBarGraph.tsx';
 
 
 function App() {
@@ -15,10 +16,11 @@ function App() {
         <RobotChart style={{width: '800px'}}/>
         <RobotRecharts/>
         <RobotHighCharts/>
-        <RobotVisx/>
         <div style={{width: '800px'}}>
           <RobotApexCharts style={{width: '800px'}} />
         </div>
+        <RobotVisx/>
+        <VisxBarGraph/>
       </div>
     </div>
   );

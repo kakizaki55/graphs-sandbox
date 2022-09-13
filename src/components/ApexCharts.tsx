@@ -14,14 +14,11 @@ const RobotApexCharts = () => {
         categories: robots.map((robot) => robot.robotName)
       },
       fill: {
-        type: 'gradient',
         gradient: {
           shade: 'light',
           type: "horizontal",
-          shadeIntensity: 0.5,
           gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
           inverseColors: true,
-          opacityFrom: 1,
           opacityTo: 1,
           stops: [0, 50, 100],
           colorStops: []
@@ -52,6 +49,53 @@ const RobotApexCharts = () => {
     }],
   }
 
+  const chartData2 = {
+    options: {
+      chart: {
+        // type: 'Line',
+        id: 'apexchart-example',
+      },
+      xaxis: {
+        categories: robots.map((robot) => robot.robotName)
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'light',
+          type: "horizontal",
+          shadeIntensity: 0.5,
+          gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 50, 100],
+          colorStops: []
+        }
+      },
+      legend: {
+        width: 400
+      },
+    },
+    series: [{
+      name: 'Average coverage ',
+      type: 'column',
+      data: robots.map((robot) => robot.avgCoverage)
+    }, {
+      name: 'Success rate',
+      type: 'column',
+      data: robots.map((robot) => robot.successRate)
+    }, {
+      name: 'distance from home',
+      type: 'column',
+      data: robots.map((robot) => robot.distanceFromHome)
+    }, {
+      name: 'total runtime',
+      type: 'column',
+      data: robots.map((robot) => robot.totalRuntime)
+    }],
+  }
+
+
 
   return (
   <div>
@@ -60,10 +104,6 @@ const RobotApexCharts = () => {
         options={chartData.options} 
         series={chartData.series} 
         type="line" />
-      <ReactApexChart 
-        options={chartData.options} 
-        series={chartData.series} 
-        type="bar" />
   </div>
   )
 }

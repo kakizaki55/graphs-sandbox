@@ -79,8 +79,8 @@ const RobotRunDetails = {
         }}, {
             id: 'LgWnaawfefawko',
             result: 'SUCCESS',
-            startTime: '2022-09-08 07.13.08',
-            endTime: '2022-09-08 07.27.03',
+            startTime: '2022-09-08 07.30.08',
+            endTime: '2022-09-08 07.45.03',
             duration: '13.9 min',
             coveragePct: 90,
             coverageArea: 13.7,

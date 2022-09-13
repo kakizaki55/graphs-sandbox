@@ -51,19 +51,6 @@ export default function RobotRecharts() {
               <Pie data={data} dataKey="Success Rate" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />
               <Pie data={data} dataKey="Total run time" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#82ca9d" label />
             </PieChart>
-            {/* <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis />
-              <Radar name="robots" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-              <Radar
-                name="Mike"
-                dataKey="B"
-                stroke="#8884d8"
-                fill="#f684d5"
-                fillOpacity={0.6}
-              />
-            </RadarChart> */}
              <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
               <RadialBar
                 label={{ position: 'insideStart', fill: '#fff' }}
