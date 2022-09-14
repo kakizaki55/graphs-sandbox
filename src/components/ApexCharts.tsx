@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactApexChart from "react-apexcharts";
 import robots from '../mockdata/robotsData';
-
+import RobotRunDetails from '../mockdata/robotRuns';
 const RobotApexCharts = () => {
 
   const chartData = {
@@ -56,7 +56,7 @@ const RobotApexCharts = () => {
         id: 'apexchart-example',
       },
       xaxis: {
-        categories: robots.map((robot) => robot.robotName)
+        categories: Object.keys(RobotRunDetails.runs[0].coverageAreaTimeData)
       },
       fill: {
         type: 'gradient',
@@ -78,21 +78,9 @@ const RobotApexCharts = () => {
     },
     series: [{
       name: 'Average coverage ',
-      type: 'column',
-      data: robots.map((robot) => robot.avgCoverage)
-    }, {
-      name: 'Success rate',
-      type: 'column',
-      data: robots.map((robot) => robot.successRate)
-    }, {
-      name: 'distance from home',
-      type: 'column',
-      data: robots.map((robot) => robot.distanceFromHome)
-    }, {
-      name: 'total runtime',
-      type: 'column',
-      data: robots.map((robot) => robot.totalRuntime)
-    }],
+      type: 'line',
+      data: Object.values(RobotRunDetails.runs[0].coverageAreaTimeData)
+    }]
   }
 
 
@@ -103,6 +91,10 @@ const RobotApexCharts = () => {
       <ReactApexChart 
         options={chartData.options} 
         series={chartData.series} 
+        type="line" />
+      <ReactApexChart 
+        options={chartData2.options} 
+        series={chartData2.series} 
         type="line" />
   </div>
   )
