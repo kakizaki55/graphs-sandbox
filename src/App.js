@@ -3,7 +3,8 @@ import RobotApexCharts from './components/ApexCharts.tsx';
 import RobotChart from './components/Chart.tsx';
 import RobotRecharts from './components/Recharts.tsx';
 import RobotVisx from './components/Visx.tsx';
-import RobotHighCharts from './components/HighCharts.tsx';
+import RobotHighCharts from './components/HighCharts.tsx'
+import RobotECharts from './components/ECharts.tsx';
 
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
         <div style={{width: '800px'}}>
           <RobotApexCharts style={{width: '800px'}} />
         </div>
-        <RobotVisx/>
+        {/* <RobotVisx/> */}
+        <RobotECharts/>
       </div>
     </div>
-  );
+  );  
 }
 
 export default App;

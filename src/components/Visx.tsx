@@ -51,10 +51,6 @@ const compose = (scale, accessor) => data => scale(accessor(data));
 const xPoint = compose(xScale, x);
 const yPoint = compose(yScale, y);
 
-// Finally we'll embed it all in an SVG
-
-
-//-----------------//
 
 const RobotVisx = () => {
   return (

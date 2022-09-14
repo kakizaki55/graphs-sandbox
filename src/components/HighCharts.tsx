@@ -3,6 +3,7 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import robots from '../mockdata/robotsData';
+import RobotRunDetails from '../mockdata/robotRuns';
 
 const RobotHighCharts = () => {
   const options1 = {
@@ -83,6 +84,27 @@ const RobotHighCharts = () => {
       }, 
     ]
   } 
+  const { runs } = RobotRunDetails
+  const options4 = {
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: 'High Chart'
+    },
+    series:[
+      {
+        type: 'line',
+        name: runs[0].id,
+        data: Object.values(runs[0].coverageAreaTimeData)
+      }, 
+      {
+        type: 'line',
+        name: runs[1].id,
+        data: Object.values(runs[1].coverageAreaTimeData)
+      }, 
+    ]
+  }
 
   
   return (
@@ -90,6 +112,7 @@ const RobotHighCharts = () => {
         <HighchartsReact highcharts={Highcharts} options={options1} />
         <HighchartsReact highcharts={Highcharts} options={options2} />
         <HighchartsReact highcharts={Highcharts} options={options3} />
+        <HighchartsReact highcharts={Highcharts} options={options4} />
     </div>
   )
 }
