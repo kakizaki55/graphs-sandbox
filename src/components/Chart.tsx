@@ -48,8 +48,13 @@ const RobotChart = () => {
     }
   }
 
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+  }
+  
+
 const robotsRunData = {
-    labels: RobotRunDetails.runs.map((run) => Object.keys(run.coverageAreaTimeData)), 
+    labels: RobotRunDetails.runs.map((run) => Object.keys(run.coverageAreaTimeData)).filter(onlyUnique), 
     datasets: RobotRunDetails.runs.map((run) => {
         return {
             label: run.id,

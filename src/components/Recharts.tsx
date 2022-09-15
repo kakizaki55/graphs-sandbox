@@ -20,11 +20,28 @@ const runsData = Object.entries(runs[0].coverageAreaTimeData).map(obj => {
     'time': obj[0],
     'area': obj[1]
    }
+})
+const runsData2 = Object.entries(runs[1].coverageAreaTimeData).map(obj => {
+  return {
+   'time': obj[0],
+   'area': obj[1]
+  }
+})
 
-  
+const runsData3 = Object.entries(runs[2].coverageAreaTimeData).map(obj => {
+  return {
+   'time': obj[0],
+   'area': obj[1]
+  }
+
+ 
 })
 
 console.log('runsdata', runsData)
+
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 
 
 
@@ -46,7 +63,8 @@ export default function RobotRecharts() {
                 <Bar dataKey="Total run time" fill="#8f22dd" />
             </BarChart>
             <div>
-            <AreaChart width={730} height={250} data={runsData}
+              {/*  */}
+            <AreaChart width={730} height={250} data={[...runsData, ...runsData2, ...runsData3]}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -64,6 +82,7 @@ export default function RobotRecharts() {
               <Tooltip />
               <Area type="monotone" dataKey="area" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
             </AreaChart>
+            {/*  */}
             </div>
             <AreaChart
               width={500}
