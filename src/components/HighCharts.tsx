@@ -41,9 +41,6 @@ const RobotHighCharts = () => {
     chart: {
       type: 'area'
     },
-    title: {
-      text: 'High Chart'
-    },
     series: [
       {
         type: 'area',
@@ -73,9 +70,6 @@ const RobotHighCharts = () => {
     chart: {
       type: 'pie'
     },
-    title: {
-      text: 'High Chart'
-    },
     series:[
       {
         type: 'pie',
@@ -88,9 +82,6 @@ const RobotHighCharts = () => {
   const options4 = {
     chart: {
       type: 'line'
-    },
-    title: {
-      text: 'High Chart'
     },
     series:[
       {
@@ -108,11 +99,11 @@ const RobotHighCharts = () => {
 
   
   return (
-    <div style={{display:'flex', flexDirection:'row'}}>  
+    <div style={{display:'flex', flexDirection:'column', border:'grey 2px solid'}}>  
         <HighchartsReact highcharts={Highcharts} options={options1} />
+        <HighchartsReact highcharts={Highcharts} options={options4} />
         <HighchartsReact highcharts={Highcharts} options={options2} />
         <HighchartsReact highcharts={Highcharts} options={options3} />
-        <HighchartsReact highcharts={Highcharts} options={options4} />
     </div>
   )
 }

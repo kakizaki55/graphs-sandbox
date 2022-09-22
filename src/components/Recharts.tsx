@@ -49,9 +49,9 @@ function onlyUnique(value, index, self) {
 export default function RobotRecharts() {
   return (
     <>
-        <div>
+        <div style={{display:'flex' , flexDirection:'column', width: '600px'}}>
           <div>Recharts</div>
-          <div style={{display: 'flex', flexDirection:'row'}}>
+          <div>
             <BarChart width={600} height={300} data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
@@ -64,7 +64,7 @@ export default function RobotRecharts() {
             </BarChart>
             <div>
               {/*  */}
-            <AreaChart width={730} height={250} data={[...runsData, ...runsData2, ...runsData3]}
+            <AreaChart width={600} height={250} data={[...runsData, ...runsData2, ...runsData3]}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -103,7 +103,7 @@ export default function RobotRecharts() {
               <Area type="monotone" dataKey="distance from home traveled" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
               <Area type="monotone" dataKey="Total run time" stackId="1" stroke="#ffc658" fill="#ffc658" />
             </AreaChart>
-            <PieChart width={400} height={400}>
+            <PieChart width={600} height={400}>
               <Pie data={data} dataKey="Success Rate" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />
               <Pie data={data} dataKey="Total run time" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#82ca9d" label />
             </PieChart>

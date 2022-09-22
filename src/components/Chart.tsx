@@ -68,16 +68,14 @@ const robotsRunData = {
 
 
   return (  
-      <div style={{width: '40vw', height: '40vh'}}>
-        <div>Chart</div>
-        <div style={{ display:'flex', flexDirection: 'row'}}>
-            <Bar data={{...robotsData}}></Bar>
+      <div style={{width: '600px'}}>
+        <div>Chart.js</div>
+            <Bar data={{...robotsData}} ></Bar>
             <Line data={robotsRunData}></Line>
             <Line data={robotsData}></Line>
             <Doughnut data={{...robotsData}}></Doughnut>
             <PolarArea data={robotsData}></PolarArea>
             <Radar data={robotsData}></Radar>
-        </div>  
     </div>
   )
 }

@@ -26,7 +26,7 @@ const RobotApexCharts = () => {
       },
       legend: {
         // position: '',
-        width: 400
+        width: 600
         // position: 'top',
       },
     },
@@ -73,7 +73,7 @@ const RobotApexCharts = () => {
         }
       },
       legend: {
-        width: 400
+        width: 600
       },
     },
     series: [{
@@ -86,7 +86,7 @@ const RobotApexCharts = () => {
 
 
   return (
-  <div>
+  <div style={{width: '600px', border:'grey 2px solid'}}>
     <div>ApexChart</div>
       <ReactApexChart 
         options={chartData.options} 

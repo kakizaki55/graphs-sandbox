@@ -151,32 +151,32 @@ export default function RobotEChart() {
   return (
     <div
       style={{
-          width: "50%",
-          height: "600px",
+          width: "600px",
           display: "flex",
-          flexWrap: "wrap"
+          flexDirection:'column',
+          border: 'grey 2px solid'
         }}
         >
-      <ReactEChart
-        style={{
-            width: "100%",
-            height: "100%"
-        }}
-        option={eChartsOption}
+        <ReactEChart
+            style={{
+              width: "600px",
+              height: "600px",
+            }}
+            option={eChartsOption}
         />
         <ReactEChart
             style={{
-                width: "100%",
-                height: "100%"
-            }}
-            option={eChartsOption2}
-        />
-        <ReactEChart
-             style={{
-                width: "100%",
-                height: "100%"
+              width: "600px",
+              height: "600px",
             }}
             option={eChartsOption3}
+        />
+        <ReactEChart
+            style={{
+              width: "600px",
+              height: "600px",
+            }}
+            option={eChartsOption2}
         />
     </div>
   );

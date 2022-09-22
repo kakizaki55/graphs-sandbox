@@ -1,92 +1,73 @@
-import React from 'react';
-import robots from '../mockdata/robotsData';
-import { Group } from '@visx/group';
+import React, { useMemo } from 'react';
 import { Bar } from '@visx/shape';
-import { BarGroup } from '@visx/shape';
-import { AxisBottom } from '@visx/axis';
-import cityTemperature, { CityTemperature } from '@visx/mock-data/lib/mocks/cityTemperature';
-import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
-import { timeParse, timeFormat } from 'd3-time-format';
+import { Group } from '@visx/group';
+import letterFrequency, { LetterFrequency } from '@visx/mock-data/lib/mocks/letterFrequency';
+import { scaleBand, scaleLinear } from '@visx/scale';
 
-console.log('robots', robots)
-const data = robots.map((robot) => { 
-   return { 
-    name: robot.robotName, 
-    avgCoverage: robot.avgCoverage, 
-    successRate: robot.successRate,
-    distanceFromHome: robot.distanceFromHome,
-    totalRunTime: robot.totalRuntime,
+const data = letterFrequency.slice(5);
+const verticalMargin = 120;
 
-  } 
-})
-console.log('data', data)
-// Define the graph dimensions and margins
-const width = 500;
-const height = 500;
-const margin = { top: 20, bottom: 20, left: 20, right: 20 };
+// accessors
+const getLetter = (d: LetterFrequency) => d.letter;
+const getLetterFrequency = (d: LetterFrequency) => Number(d.frequency) * 100;
 
-// Then we'll create some bounds
-const xMax = width - margin.left - margin.right;
-const yMax = height - margin.top - margin.bottom;
+export type BarsProps = {
+  width: number;
+  height: number;
+  events?: boolean;
+};
 
-// We'll make some helpers to get at the data we want
-const x = d => d.name;
-const y = d => +d.avgCoverage * 100;
+export default function RobotVisx({ width, height, events = false }: BarsProps) {
+  // bounds
+  const xMax = width;
+  const yMax = height - verticalMargin;
 
-// And then scale the graph by our data
-const xScale = scaleBand({
-  range: [0, xMax],
-  round: true,
-  domain: data.map(x),
-  padding: .6,
-});
-const yScale = scaleLinear({
-  range: [yMax, 0],
-  round: true,
-  domain: [0, Math.max(...data.map(y))],
-});
+  // scales, memoize for performance
+  const xScale = useMemo(
+    () =>
+      scaleBand<string>({
+        range: [0, xMax],
+        round: true,
+        domain: data.map(getLetter),
+        padding: 0.4,
+      }),
+    [xMax],
+  );
+  const yScale = useMemo(
+    () =>
+      scaleLinear<number>({
+        range: [yMax, 0],
+        round: true,
+        domain: [0, Math.max(...data.map(getLetterFrequency))],
+      }),
+    [yMax],
+  );
 
-// Compose together the scale and accessor functions to get point functions
-const compose = (scale, accessor) => data => scale(accessor(data));
-const xPoint = compose(xScale, x);
-const yPoint = compose(yScale, y);
-
-
-const RobotVisx = () => {
-  return (
-    <>
-    <div>Visx</div>
-    <div style={{border: '2px solid grey'}}>
-        <svg width={width} height={height}>
-        {data.map((name, avgCoverage, successRate) => {
-            const barHeight = yMax - yPoint(name);
-            return (
-              <div key={`bar-${avgCoverage}`}>
-                <Group >
-                    <Bar 
-                        x={xPoint(name)}
-                        y={yMax - barHeight}
-                        height={barHeight}
-                        width={xScale.bandwidth()}
-                        fill="#fc2e1c"
-                        />
-                </Group>
-                <Group key={`bar-${successRate}`}>
-                    <Bar 
-                        x={xPoint(name) - 20}
-                        y={yMax - barHeight}
-                        height={barHeight}
-                        width={xScale.bandwidth()}
-                        fill="pink"
-                        />
-                </Group>
-              </div >
-        );
-    })}
-        </svg>
-    </div>
-    </>
-  )
+  return width < 10 ? null : (
+    <svg width={width} height={height}>
+      <rect width={width} height={height} fill="url(#teal)" rx={14} />
+      <Group top={verticalMargin / 2}>
+        {data.map((d) => {
+          const letter = getLetter(d);
+          const barWidth = xScale.bandwidth();
+          const barHeight = yMax - (yScale(getLetterFrequency(d)) ?? 0);
+          const barX = xScale(letter);
+          const barY = yMax - barHeight;
+          return (
+            <Bar
+              key={`bar-${letter}`}
+              x={barX}
+              y={barY}
+              width={barWidth}
+              height={barHeight}
+              fill="rgba(23, 233, 217, .5)"
+              onClick={() => {
+                if (events) alert(`clicked: ${JSON.stringify(Object.values(d))}`);
+              }}
+            />
+          );
+        })}
+      </Group>
+    </svg>
+  );
 }
-
-export default RobotVisx

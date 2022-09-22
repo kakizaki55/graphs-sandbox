@@ -10,18 +10,16 @@ import RobotECharts from './components/ECharts.tsx';
 function App() {
 
   return (
-    <div className="App" style={{display: 'flex', overflowWrap: 'normal', justifyContent: 'center', margin:'auto', padding: '20px'}}>
+    <div className="App" style={{display: 'flex', flexWrap: 'normal', margin:'auto', padding: '20px'}}>
       <h1>hello world</h1>
-      <div style={{display: 'flex', flexDirection:'column', gap: '10px', alignItems:'center'}}>
-        <RobotChart style={{width: '800px'}}/>
-        <RobotRecharts/>
+      <div style={{display: 'flex', gap: '10px'}}>
         <RobotHighCharts/>
-        <div style={{width: '800px'}}>
-          <RobotApexCharts style={{width: '800px'}} />
-        </div>
-        {/* <RobotVisx/> */}
-        <RobotECharts/>
-      </div>
+        <RobotChart />
+        <RobotApexCharts />
+        <RobotRecharts/>
+        <RobotECharts /> 
+        <RobotVisx/>
+      </div> 
     </div>
   );  
 }
