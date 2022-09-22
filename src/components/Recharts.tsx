@@ -13,7 +13,7 @@ const data = robots.map((robot) => {
 })
 
 const { runs } = RobotRunDetails 
-console.log('runs', runs[0])
+
 
 const runsData = Object.entries(runs[0].coverageAreaTimeData).map(obj => {
    return {
@@ -37,7 +37,6 @@ const runsData3 = Object.entries(runs[2].coverageAreaTimeData).map(obj => {
  
 })
 
-console.log('runsdata', runsData)
 
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;

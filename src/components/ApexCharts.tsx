@@ -80,7 +80,12 @@ const RobotApexCharts = () => {
       name: 'Average coverage ',
       type: 'line',
       data: Object.values(RobotRunDetails.runs[0].coverageAreaTimeData)
-    }]
+    }, {
+      name: 'Average coverage ',
+      type: 'line',
+      data: Object.values(RobotRunDetails.runs[1].coverageAreaTimeData)
+    }, 
+  ]
   }
 
 

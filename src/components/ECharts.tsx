@@ -52,6 +52,8 @@ export default function RobotEChart() {
     },]
   };
 
+  const { runs } = RobotRunDetails
+
   const eChartsOption2 = {
     title: {
       // title of our chart
@@ -59,57 +61,7 @@ export default function RobotEChart() {
     },
     xAxis: {
       // name of X Axis
-      name: "X Axis",
-      type: "category",
-      // Contains the values for XAxis
-      data: robots.map(robot => robot.robotName)
-    },
-    yAxis: {
-      // name of Y Axis
       name: "time",
-      type: "value"
-    },
-    //To enable tooltips
-    tooltip: {},
-    // To enable toolbox
-    toolbox: {
-      feature: {
-        // displays a options to direct save chart as a image
-        saveAsImage: {}
-      }
-    },
-
-    series: [{
-        label: 'average coverage',
-        data: robots.map(robot => robot.avgCoverage),
-        type: "pie",
-    },
-    {
-        data: robots.map(robot => robot.successRate),
-        type: "pie",
-        stack: "percentage"
-    },
-    {
-        data: robots.map(robot => robot.distanceFromHome),
-        type: "line",
-    },
-    {
-        data: robots.map(robot => robot.totalRuntime),
-        type: "line",
-        stack: "time"
-    },]
-  };
-
-  const { runs } = RobotRunDetails
-
-  const eChartsOption3 = {
-    title: {
-      // title of our chart
-      text: "Echarts"
-    },
-    xAxis: {
-      // name of X Axis
-      name: "X Axis",
       type: "time",
       // Contains the values for XAxis
       data: Object.keys(runs[0].coverageAreaTimeData)
@@ -117,7 +69,8 @@ export default function RobotEChart() {
     yAxis: {
       // name of Y Axis
       name: "coverage",
-      type: "value"
+      type: "value",
+      data: Object.keys(runs[1].coverageAreaTimeData)
     },
     //To enable tooltips
     tooltip: {},
@@ -148,6 +101,63 @@ export default function RobotEChart() {
       ]
   };
 
+  const eChartsOption3 = {
+    title: {
+      // title of our chart
+      text: "Echarts"
+    },
+    xAxis: {
+      // name of X Axis
+      name: "X Axis",
+      type: "category",
+      // Contains the values for XAxis
+      data: robots.map(robot => robot.robotName)
+    },
+    yAxis: {
+      // name of Y Axis
+      name: "time",
+      type: "value"
+    },
+    //To enable tooltips
+    tooltip: {
+      show:'true',
+      axisPointer: {
+        type: 'line' ,
+        axis: 'auto' ,
+    }},
+    // To enable toolbox
+    toolbox: {
+      feature: {
+        // displays a options to direct save chart as a image
+        saveAsImage: {}
+      }
+    },
+
+    series: [{
+        label: 'average coverage',
+        data: robots.map(robot => robot.avgCoverage),
+        type: "line",
+    },
+    {
+        label: 'success rate',
+        data: robots.map(robot => robot.successRate),
+        type: "line",
+        stack: "percentage"
+    },
+    {   
+        label:'distance from home',
+        data: robots.map(robot => robot.distanceFromHome),
+        type: "line",
+    },
+    {
+        label: 'total run time',
+        data: robots.map(robot => robot.totalRuntime),
+        type: "line",
+        stack: "time"
+    },]
+  };
+
+
   return (
     <div
       style={{
@@ -169,14 +179,14 @@ export default function RobotEChart() {
               width: "600px",
               height: "600px",
             }}
-            option={eChartsOption3}
+            option={eChartsOption2}
         />
         <ReactEChart
             style={{
               width: "600px",
               height: "600px",
             }}
-            option={eChartsOption2}
+            option={eChartsOption3}
         />
     </div>
   );
