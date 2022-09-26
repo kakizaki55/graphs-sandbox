@@ -70,10 +70,10 @@ const robotsRunData = {
   return (  
       <div style={{width: '600px'}}>
         <div>Chart.js</div>
-            <Bar data={{...robotsData}} ></Bar>
+            <Bar data={robotsData} ></Bar>
             <Line data={robotsRunData}></Line>
             <Line data={robotsData}></Line>
-            <Doughnut data={{...robotsData}}></Doughnut>
+            <Doughnut data={robotsData}></Doughnut>
             <PolarArea data={robotsData}></PolarArea>
             <Radar data={robotsData}></Radar>
     </div>

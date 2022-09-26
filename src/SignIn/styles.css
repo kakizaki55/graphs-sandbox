@@ -1,0 +1,17 @@
+body {
+  margin:0px;
+  padding:0px;
+}
+[data-amplify-authenticator] {
+  width: 100%;
+}
+[data-amplify-authenticator] [data-amplify-router] {
+  box-shadow: none;
+  border-style: none;
+  background-color: inherit;
+}
+@media (min-width: 30rem) {
+  [data-amplify-authenticator] [data-amplify-container] {
+    width: auto;
+  }
+}
