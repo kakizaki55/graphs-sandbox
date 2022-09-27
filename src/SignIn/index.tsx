@@ -126,6 +126,8 @@ const CustomSignIn = React.memo(() => {
       setLogoWidth('36vw');
     } else {
       setDisplayLogo(false);
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
     }
   };
 
@@ -148,7 +150,7 @@ const CustomSignIn = React.memo(() => {
       setLogoWidth('75vw');
     }
   } 
-    
+  
   
   
   useEffect(() => {
@@ -158,27 +160,37 @@ const CustomSignIn = React.memo(() => {
       setLogoWidth('75vw');
       setDisplayLogo(false)
     }
-
-    if(window.innerWidth > 500 && window.innerWidth < 1280){
+    
+    
+    if(window.innerWidth > 500 && window.innerWidth < 900){
       setMobileCondition(false)
       setContainerWidth('80vw');
       setLogoWidth('75vw');
       setDisplayLogo(false)
     }
-
+    
+    if(window.innerWidth > 900 && window.innerWidth < 1280){
+      setMobileCondition(false)
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
+      setDisplayLogo(false)
+    }
+    
     if(window.innerWidth > 1280){
       setMobileCondition(false)
       setContainerWidth('40vw');
       setLogoWidth('36vw');
       setDisplayLogo(true)
     }
-
+    
+    
     window.matchMedia('(max-width: 500px)').addEventListener('change', handleMobile);
     window.matchMedia('(min-width: 500px)').addEventListener('change', handleMiddle);
     window.matchMedia('(min-width: 900px)').addEventListener('change', handleMiddleLarge);
     window.matchMedia('(min-width: 1280px)').addEventListener('change', handleDeskTop);
+  }, []);
 
-  }, [containerWidth, displayLogo, logoWidth, mobileCondition]);
+  console.log('containerWidth', containerWidth)
 
   return (
     <AmplifyProvider theme={theme}>
