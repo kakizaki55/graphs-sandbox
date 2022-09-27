@@ -104,7 +104,6 @@ const CustomSignIn = React.memo(() => {
         },
       };
 
-
       const [containerWidth, setContainerWidth] = useState('40vw');
       const [logoWidth, setLogoWidth] = useState('36vw');
       const [displayLogo, setDisplayLogo] = useState(true);
@@ -112,17 +111,19 @@ const CustomSignIn = React.memo(() => {
       
   const handleMiddle = (e:any) => {
     if (e.matches) {
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-    } else {
       setContainerWidth('80vw');
       setLogoWidth('75vw');
+    } else {
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
     }
   };
 
   const handleDeskTop = (e:any) => {
     if (e.matches) {
       setDisplayLogo(true);
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
     } else {
       setDisplayLogo(false);
     }
@@ -131,10 +132,22 @@ const CustomSignIn = React.memo(() => {
   const handleMobile = (e: any) => {
     if (e.matches) {
       setMobileCondition(true);
+      setContainerWidth('80vw');
+      setLogoWidth('75vw');
     } else {
       setMobileCondition(false);
     }
   };
+
+  const handleMiddleLarge = (e: any) => {
+    if(e.matches) {
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
+    } else {
+      setContainerWidth('80vw');
+      setLogoWidth('75vw');
+    }
+  } 
     
   
   
@@ -155,19 +168,14 @@ const CustomSignIn = React.memo(() => {
 
     if(window.innerWidth > 1280){
       setMobileCondition(false)
-      setContainerWidth('80vw');
-      setLogoWidth('75vw');
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
       setDisplayLogo(true)
     }
 
-    console.log('window.width', window.innerWidth, {
-    containerWidth, 
-    logoWidth,
-    displayLogo,
-    mobileCondition})
-
     window.matchMedia('(max-width: 500px)').addEventListener('change', handleMobile);
-    window.matchMedia('(min-width: 900px)').addEventListener('change', handleMiddle);
+    window.matchMedia('(min-width: 500px)').addEventListener('change', handleMiddle);
+    window.matchMedia('(min-width: 900px)').addEventListener('change', handleMiddleLarge);
     window.matchMedia('(min-width: 1280px)').addEventListener('change', handleDeskTop);
 
   }, [containerWidth, displayLogo, logoWidth, mobileCondition]);
@@ -176,7 +184,7 @@ const CustomSignIn = React.memo(() => {
     <AmplifyProvider theme={theme}>
       <Grid
         backgroundImage={`url(${myPicURLS[randomPicNumber]}`}
-        display='grid'
+        display={displayLogo ? 'flex' : 'grid'}
         justifyContent='center'
         height='100vh'
         style={{
@@ -193,8 +201,6 @@ const CustomSignIn = React.memo(() => {
           style={{
             paddingTop: '3rem',
           }}
-          columnStart="1"
-          columnEnd="3"
         >
           <TailosLogo logoWidth={logoWidth} />
         </Flex>
