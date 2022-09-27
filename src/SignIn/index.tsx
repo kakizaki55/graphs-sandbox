@@ -23,6 +23,8 @@ import SignInHeader from './SignInHeader.js';
 // replace with ui-common
 import TailosLogo from './TAILOS_Full_Color_White';
 
+import useMediaQuery from './utils'
+
 const CustomSignIn = React.memo(() => {
   const { tokens } = useTheme();
   
@@ -103,56 +105,22 @@ const CustomSignIn = React.memo(() => {
           },
         },
       };
-
       const [containerWidth, setContainerWidth] = useState('40vw');
       const [logoWidth, setLogoWidth] = useState('36vw');
       const [displayLogo, setDisplayLogo] = useState(true);
       const [mobileCondition, setMobileCondition] = useState(false);
       
-  const handleMiddle = (e:any) => {
-    if (e.matches) {
-      setContainerWidth('80vw');
-      setLogoWidth('75vw');
-    } else {
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-    }
-  };
+      const MOBILE_BREAKPOINT = (mediaHook) => mediaHook("(max-width:500px)");
+      const MOBILE_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:500px)");
+      const DESKTOP_BREAKPOINT = (mediaHook) => mediaHook("(min-width:950px)");
+      const DESKTOP_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:1280px)");
 
-  const handleDeskTop = (e:any) => {
-    if (e.matches) {
-      setDisplayLogo(true);
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-    } else {
-      setDisplayLogo(false);
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-    }
-  };
+      const mobileBreakPointMatch = MOBILE_BREAKPOINT(useMediaQuery)
+      const mobileBreakPointMatchLarge = MOBILE_BREAKPOINT_LARGE(useMediaQuery)
+      const deskTopBreakPointMatch = DESKTOP_BREAKPOINT(useMediaQuery)
+      const deskTopBreakPointMatchLarge = DESKTOP_BREAKPOINT_LARGE(useMediaQuery)
 
-  const handleMobile = (e: any) => {
-    if (e.matches) {
-      setMobileCondition(true);
-      setContainerWidth('80vw');
-      setLogoWidth('75vw');
-    } else {
-      setMobileCondition(false);
-    }
-  };
 
-  const handleMiddleLarge = (e: any) => {
-    if(e.matches) {
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-    } else {
-      setContainerWidth('80vw');
-      setLogoWidth('75vw');
-    }
-  } 
-  
-  
-  
   useEffect(() => {
     if(window.innerWidth < 500){
       setMobileCondition(true)
@@ -161,15 +129,14 @@ const CustomSignIn = React.memo(() => {
       setDisplayLogo(false)
     }
     
-    
-    if(window.innerWidth > 500 && window.innerWidth < 900){
+    if(window.innerWidth > 500 && window.innerWidth < 950){
       setMobileCondition(false)
       setContainerWidth('80vw');
       setLogoWidth('75vw');
       setDisplayLogo(false)
     }
     
-    if(window.innerWidth > 900 && window.innerWidth < 1280){
+    if(window.innerWidth > 950 && window.innerWidth < 1280){
       setMobileCondition(false)
       setContainerWidth('40vw');
       setLogoWidth('36vw');
@@ -182,15 +149,9 @@ const CustomSignIn = React.memo(() => {
       setLogoWidth('36vw');
       setDisplayLogo(true)
     }
-    
-    
-    window.matchMedia('(max-width: 500px)').addEventListener('change', handleMobile);
-    window.matchMedia('(min-width: 500px)').addEventListener('change', handleMiddle);
-    window.matchMedia('(min-width: 900px)').addEventListener('change', handleMiddleLarge);
-    window.matchMedia('(min-width: 1280px)').addEventListener('change', handleDeskTop);
-  }, []);
 
-  console.log('containerWidth', containerWidth)
+  }, [mobileBreakPointMatch, deskTopBreakPointMatch, mobileBreakPointMatchLarge, deskTopBreakPointMatchLarge]);
+
 
   return (
     <AmplifyProvider theme={theme}>
