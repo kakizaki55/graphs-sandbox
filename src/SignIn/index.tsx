@@ -25,11 +25,7 @@ import TailosLogo from './TAILOS_Full_Color_White';
 
 const CustomSignIn = React.memo(() => {
   const { tokens } = useTheme();
-  const [containerWidth, setContainerWidth] = useState('35vw');
-  const [logoWidth, setLogoWidth] = useState('32vw');
-  const [logoSetAside, setLogoPosition] = useState(true);
-  const [mobileCondition, setMobileCondition] = useState(false);
-
+  
   // TODO create evn variable for assets
   const myPicURLS = useMemo(() => [
     `${process.env.GLOBAL_ASSETS_URL}/architecture1.jpg`,
@@ -39,113 +35,148 @@ const CustomSignIn = React.memo(() => {
     `${process.env.GLOBAL_ASSETS_URL}/light.jpg`,
     `${process.env.GLOBAL_ASSETS_URL}/servers.jpg`,
   ], []);
-
+  
   const randomPicNumber = useMemo(() => Math.floor(Math.random() * myPicURLS.length), [myPicURLS]);
-
+  
   const headerComponent = () => {
-    if (logoSetAside) {
+    if (displayLogo) {
       return (<div />);
     } else {
       return (<Header logoWidth={logoWidth} />);
     }
   };
-
+  
   const signInFooterComponent = () => (
-    <SignInFooter logoSetAside={logoSetAside} />
-  );
-
-  const singInHeaderComponent = () => (
-    <SignInHeader logoSetAside={logoSetAside} />
-  );
-
-  const components = {
-    // eslint-disable-next-line react/no-unstable-nested-components
-    Header: headerComponent,
-    SignIn: {
-      Header: singInHeaderComponent,
-      Footer: signInFooterComponent,
-    },
-    Footer,
-  };
-
-  const formFields = {
-    signIn: {
-      username: {
-        placeholder: 'Enter Your Email',
-        isRequired: true,
-        label: 'Email:',
-      },
-      password: {
-        placeholder: 'Enter Your Password',
-        isRequired: true,
-        label: 'Password:',
-      },
-    },
-  };
-
-  const theme: Theme = {
-    name: 'my-theme',
-    tokens: {
-      colors: {
-        background: {
-          primary: {
-            value: '#040041',
+    <SignInFooter logoSetAside={displayLogo} />
+    );
+    
+    const singInHeaderComponent = () => (
+      <SignInHeader logoSetAside={displayLogo} />
+      );
+      
+      const components = {
+        // eslint-disable-next-line react/no-unstable-nested-components
+        Header: headerComponent,
+        SignIn: {
+          Header: singInHeaderComponent,
+          Footer: signInFooterComponent,
+        },
+        Footer,
+      };
+      
+      const formFields = {
+        signIn: {
+          username: {
+            placeholder: 'Enter Your Email',
+            isRequired: true,
+            label: 'Email:',
           },
-          secondary: {
-            value: '#F3F6F9',
+          password: {
+            placeholder: 'Enter Your Password',
+            isRequired: true,
+            label: 'Password:',
           },
         },
-      },
-      components: {
-        button: {
-          primary: {
-            backgroundColor: {
-              value: '#16c5c8',
+      };
+      
+      const theme: Theme = {
+        name: 'my-theme',
+        tokens: {
+          colors: {
+            background: {
+              primary: {
+                value: '#040041',
+              },
+              secondary: {
+                value: '#F3F6F9',
+              },
+            },
+          },
+          components: {
+            button: {
+              primary: {
+                backgroundColor: {
+                  value: '#16c5c8',
+                },
+              },
             },
           },
         },
-      },
-    },
+      };
+
+
+      const [containerWidth, setContainerWidth] = useState('40vw');
+      const [logoWidth, setLogoWidth] = useState('36vw');
+      const [displayLogo, setDisplayLogo] = useState(true);
+      const [mobileCondition, setMobileCondition] = useState(false);
+      
+  const handleMiddle = (e:any) => {
+    if (e.matches) {
+      setContainerWidth('40vw');
+      setLogoWidth('36vw');
+    } else {
+      setContainerWidth('80vw');
+      setLogoWidth('75vw');
+    }
   };
 
+  const handleDeskTop = (e:any) => {
+    if (e.matches) {
+      setDisplayLogo(true);
+    } else {
+      setDisplayLogo(false);
+    }
+  };
+
+  const handleMobile = (e: any) => {
+    if (e.matches) {
+      setMobileCondition(true);
+    } else {
+      setMobileCondition(false);
+    }
+  };
+    
+  
+  
   useEffect(() => {
-    const handler = (e:any) => {
-      if (e.matches) {
-        setContainerWidth('35vw');
-        setLogoWidth('32vw');
-      } else {
-        setContainerWidth('80vw');
-        setLogoWidth('75vw');
-      }
-    };
+    if(window.innerWidth < 500){
+      setMobileCondition(true)
+      setContainerWidth('80vw');
+      setLogoWidth('75vw');
+      setDisplayLogo(false)
+    }
 
-    const hanldleLogoPosition = (e:any) => {
-      if (e.matches) {
-        setLogoPosition(true);
-      } else {
-        setLogoPosition(false);
-      }
-    };
+    if(window.innerWidth > 500 && window.innerWidth < 1280){
+      setMobileCondition(false)
+      setContainerWidth('80vw');
+      setLogoWidth('75vw');
+      setDisplayLogo(false)
+    }
 
-    const handleMobile = (e) => {
-      if (e.matches) {
-        setMobileCondition(true);
-      } else {
-        setMobileCondition(false);
-      }
-    };
+    if(window.innerWidth > 1280){
+      setMobileCondition(false)
+      setContainerWidth('80vw');
+      setLogoWidth('75vw');
+      setDisplayLogo(true)
+    }
+
+    console.log('window.width', window.innerWidth, {
+    containerWidth, 
+    logoWidth,
+    displayLogo,
+    mobileCondition})
 
     window.matchMedia('(max-width: 500px)').addEventListener('change', handleMobile);
-    window.matchMedia('(min-width: 900px)').addEventListener('change', handler);
-    window.matchMedia('(min-width: 1280px)').addEventListener('change', hanldleLogoPosition);
-  }, []);
+    window.matchMedia('(min-width: 900px)').addEventListener('change', handleMiddle);
+    window.matchMedia('(min-width: 1280px)').addEventListener('change', handleDeskTop);
+
+  }, [containerWidth, displayLogo, logoWidth, mobileCondition]);
 
   return (
     <AmplifyProvider theme={theme}>
-
       <Grid
         backgroundImage={`url(${myPicURLS[randomPicNumber]}`}
-        display={logoSetAside ? 'flex' : 'grid'}
+        display='grid'
         justifyContent='center'
         height='100vh'
         style={{
@@ -158,10 +189,12 @@ const CustomSignIn = React.memo(() => {
           justifyContent="center"
           textAlign='center'
           margin='auto'
-          display={logoSetAside ? 'block' : 'none'}
+          display={displayLogo ? 'block' : 'none'}
           style={{
             paddingTop: '3rem',
           }}
+          columnStart="1"
+          columnEnd="3"
         >
           <TailosLogo logoWidth={logoWidth} />
         </Flex>
@@ -178,7 +211,7 @@ const CustomSignIn = React.memo(() => {
           <Authenticator
             components={components}
             formFields={formFields}
-            hideSignUp
+            // hideSignUp
           />
         </Grid>
       </Grid>
