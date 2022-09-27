@@ -105,8 +105,9 @@ const CustomSignIn = React.memo(() => {
           },
         },
       };
-      const [containerWidth, setContainerWidth] = useState('40vw');
-      const [logoWidth, setLogoWidth] = useState('36vw');
+
+      const [containerWidth, setContainerWidth] = useState('35vw');
+      const [logoWidth, setLogoWidth] = useState('32vw');
       const [displayLogo, setDisplayLogo] = useState(true);
       const [mobileCondition, setMobileCondition] = useState(false);
       
@@ -121,37 +122,35 @@ const CustomSignIn = React.memo(() => {
       const deskTopBreakPointMatchLarge = DESKTOP_BREAKPOINT_LARGE(useMediaQuery)
 
 
-  useEffect(() => {
+      
+      
+      useEffect(() => {
+    const setResponsiveState = (mobile: boolean, logo: boolean, containerVh: '80vw' | '35vw' , LogoVh: '75vw' | '32vw') => {
+      setMobileCondition(mobile)
+      setDisplayLogo(logo)
+      setContainerWidth(containerVh);
+      setLogoWidth(LogoVh);
+    }
     if(window.innerWidth < 500){
-      setMobileCondition(true)
-      setContainerWidth('80vw');
-      setLogoWidth('75vw');
-      setDisplayLogo(false)
+      setResponsiveState(true, false, '80vw', '75vw')
     }
     
     if(window.innerWidth > 500 && window.innerWidth < 950){
-      setMobileCondition(false)
-      setContainerWidth('80vw');
-      setLogoWidth('75vw');
-      setDisplayLogo(false)
+      setResponsiveState(false, false, '80vw', '75vw')
     }
     
     if(window.innerWidth > 950 && window.innerWidth < 1280){
-      setMobileCondition(false)
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-      setDisplayLogo(false)
+      setResponsiveState(false, false, '35vw', '32vw')
     }
     
     if(window.innerWidth > 1280){
-      setMobileCondition(false)
-      setContainerWidth('40vw');
-      setLogoWidth('36vw');
-      setDisplayLogo(true)
+      setResponsiveState(false, true, '35vw', '32vw')
     }
 
+    
   }, [mobileBreakPointMatch, deskTopBreakPointMatch, mobileBreakPointMatchLarge, deskTopBreakPointMatchLarge]);
-
+  
+  console.log('inside component')
 
   return (
     <AmplifyProvider theme={theme}>
