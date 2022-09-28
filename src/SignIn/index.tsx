@@ -8,6 +8,7 @@ import {
   Flex,
   Grid,
   Theme,
+  useBreakpointValue,
   useTheme,
 } from '@aws-amplify/ui-react';
 import React, {
@@ -106,49 +107,76 @@ const CustomSignIn = React.memo(() => {
         },
       };
 
-      const [containerWidth, setContainerWidth] = useState('35vw');
-      const [logoWidth, setLogoWidth] = useState('32vw');
-      const [displayLogo, setDisplayLogo] = useState(true);
-      const [mobileCondition, setMobileCondition] = useState(false);
+      const mobileCondition = useBreakpointValue({
+        base: true,
+        small: false,
+        large: false,
+        xl: false,
+      });
+      const displayLogo = useBreakpointValue({
+        base: false,
+        small: false,
+        large: false,
+        xl: true,
+      })
+      const containerWidth = useBreakpointValue({
+        base: '80vw',
+        small: '80vw',
+        large: '35vw',
+        xl: '35vw'
+      })
+
+      const logoWidth = useBreakpointValue({
+        base: '75vw',
+        small: '75vw',
+        large: '32vw',
+        xl: '32vw'
+      })
       
-      const MOBILE_BREAKPOINT = (mediaHook) => mediaHook("(max-width:500px)");
-      const MOBILE_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:500px)");
-      const DESKTOP_BREAKPOINT = (mediaHook) => mediaHook("(min-width:950px)");
-      const DESKTOP_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:1280px)");
+            // const MOBILE_BREAKPOINT = (mediaHook) => mediaHook("(max-width:500px)");
+            // const MOBILE_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:500px)");
+            // const DESKTOP_BREAKPOINT = (mediaHook) => mediaHook("(min-width:950px)");
+            // const DESKTOP_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:1280px)");
+      
+            // const mobileBreakPointMatch = MOBILE_BREAKPOINT(useMediaQuery)
+            // const mobileBreakPointMatchLarge = MOBILE_BREAKPOINT_LARGE(useMediaQuery)
+            // const deskTopBreakPointMatch = DESKTOP_BREAKPOINT(useMediaQuery)
+            // const deskTopBreakPointMatchLarge = DESKTOP_BREAKPOINT_LARGE(useMediaQuery)
 
-      const mobileBreakPointMatch = MOBILE_BREAKPOINT(useMediaQuery)
-      const mobileBreakPointMatchLarge = MOBILE_BREAKPOINT_LARGE(useMediaQuery)
-      const deskTopBreakPointMatch = DESKTOP_BREAKPOINT(useMediaQuery)
-      const deskTopBreakPointMatchLarge = DESKTOP_BREAKPOINT_LARGE(useMediaQuery)
 
 
+      // const [mobileCondition, setMobileCondition] = useState(false);
+      // const [displayLogo, setDisplayLogo] = useState(true);
+      // const [containerWidth, setContainerWidth] = useState('35vw');
+      // const [logoWidth, setLogoWidth] = useState('32vw');
       
       
-      useEffect(() => {
-    const setResponsiveState = (mobile: boolean, logo: boolean, containerVh: '80vw' | '35vw' , LogoVh: '75vw' | '32vw') => {
-      setMobileCondition(mobile)
-      setDisplayLogo(logo)
-      setContainerWidth(containerVh);
-      setLogoWidth(LogoVh);
-    }
-    if(window.innerWidth < 500){
-      setResponsiveState(true, false, '80vw', '75vw')
-    }
+    // const setResponsiveState = (mobile: boolean, logo: boolean, containerVh: '80vw' | '35vw' , LogoVh: '75vw' | '32vw') => {
+    //     setMobileCondition(mobile)
+    //     setDisplayLogo(logo)
+    //     setContainerWidth(containerVh);
+    //     setLogoWidth(LogoVh);
+    // }
+      
+    useEffect(() => {
+    // if(window.innerWidth < 500){
+    //   setResponsiveState(true, false, '80vw', '75vw')
+    // }
     
-    if(window.innerWidth > 500 && window.innerWidth < 950){
-      setResponsiveState(false, false, '80vw', '75vw')
-    }
+    // if(window.innerWidth > 500 && window.innerWidth < 950){
+    //   setResponsiveState(false, false, '80vw', '75vw')
+    // }
     
-    if(window.innerWidth > 950 && window.innerWidth < 1280){
-      setResponsiveState(false, false, '35vw', '32vw')
-    }
+    // if(window.innerWidth > 950 && window.innerWidth < 1280){
+    //   setResponsiveState(false, false, '35vw', '32vw')
+    // }
     
-    if(window.innerWidth > 1280){
-      setResponsiveState(false, true, '35vw', '32vw')
-    }
+    // if(window.innerWidth > 1280){
+    //   setResponsiveState(false, true, '35vw', '32vw')
+    // }
 
     
-  }, [mobileBreakPointMatch, deskTopBreakPointMatch, mobileBreakPointMatchLarge, deskTopBreakPointMatchLarge]);
+  }, []);
   
   console.log('inside component')
 
