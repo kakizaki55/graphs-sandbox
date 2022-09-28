@@ -12,9 +12,7 @@ import {
   useTheme,
 } from '@aws-amplify/ui-react';
 import React, {
-  useEffect,
   useMemo,
-  useState,
 } from 'react';
 
 import Footer from './Footer.js';
@@ -24,9 +22,43 @@ import SignInHeader from './SignInHeader.js';
 // replace with ui-common
 import TailosLogo from './TAILOS_Full_Color_White';
 
-import useMediaQuery from './utils'
 
 const CustomSignIn = React.memo(() => {
+  interface BreakPoints {
+    mobileCondition: boolean
+    displayLogo: boolean
+    containerWidth: string 
+    logoWidth: string
+  }
+  
+  const breakPointOptions  = useBreakpointValue<BreakPoints>({
+    base: {
+      mobileCondition: true,
+      displayLogo: false,
+      containerWidth: '80vw', 
+      logoWidth: '75vw'
+    }, 
+    small: {
+      mobileCondition: false,
+      displayLogo: false,
+      containerWidth: '80vw', 
+      logoWidth: '75vw'
+    }, 
+    large: {
+      mobileCondition: false,
+      displayLogo: false,
+      containerWidth: '35vw', 
+      logoWidth: '32vw'
+    }, 
+    xl: {
+      mobileCondition: false,
+      displayLogo: true,
+      containerWidth: '35vw', 
+      logoWidth: '32vw'
+    }, 
+  })
+  
+  const { mobileCondition, displayLogo, containerWidth, logoWidth } = breakPointOptions as BreakPoints
   const { tokens } = useTheme();
   
   // TODO create evn variable for assets
@@ -107,31 +139,6 @@ const CustomSignIn = React.memo(() => {
         },
       };
 
-      const mobileCondition = useBreakpointValue({
-        base: true,
-        small: false,
-        large: false,
-        xl: false,
-      });
-      const displayLogo = useBreakpointValue({
-        base: false,
-        small: false,
-        large: false,
-        xl: true,
-      })
-      const containerWidth = useBreakpointValue({
-        base: '80vw',
-        small: '80vw',
-        large: '35vw',
-        xl: '35vw'
-      })
-
-      const logoWidth = useBreakpointValue({
-        base: '75vw',
-        small: '75vw',
-        large: '32vw',
-        xl: '32vw'
-      })
       
             // const MOBILE_BREAKPOINT = (mediaHook) => mediaHook("(max-width:500px)");
             // const MOBILE_BREAKPOINT_LARGE = (mediaHook) => mediaHook("(min-width:500px)");
@@ -158,25 +165,25 @@ const CustomSignIn = React.memo(() => {
     //     setLogoWidth(LogoVh);
     // }
       
-    useEffect(() => {
-    // if(window.innerWidth < 500){
-    //   setResponsiveState(true, false, '80vw', '75vw')
-    // }
+  //   useEffect(() => {
+  //   // if(window.innerWidth < 500){
+  //   //   setResponsiveState(true, false, '80vw', '75vw')
+  //   // }
     
-    // if(window.innerWidth > 500 && window.innerWidth < 950){
-    //   setResponsiveState(false, false, '80vw', '75vw')
-    // }
+  //   // if(window.innerWidth > 500 && window.innerWidth < 950){
+  //   //   setResponsiveState(false, false, '80vw', '75vw')
+  //   // }
     
-    // if(window.innerWidth > 950 && window.innerWidth < 1280){
-    //   setResponsiveState(false, false, '35vw', '32vw')
-    // }
+  //   // if(window.innerWidth > 950 && window.innerWidth < 1280){
+  //   //   setResponsiveState(false, false, '35vw', '32vw')
+  //   // }
     
-    // if(window.innerWidth > 1280){
-    //   setResponsiveState(false, true, '35vw', '32vw')
-    // }
+  //   // if(window.innerWidth > 1280){
+  //   //   setResponsiveState(false, true, '35vw', '32vw')
+  //   // }
 
     
-  }, []);
+  // }, []);
   
   console.log('inside component')
 
