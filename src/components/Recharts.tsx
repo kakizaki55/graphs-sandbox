@@ -61,8 +61,7 @@ export default function RobotRecharts() {
                 <Bar dataKey="distance from home traveled" fill="#82ca9d" />
                 <Bar dataKey="Total run time" fill="#8f22dd" />
             </BarChart>
-            <div>
-              {/*  */}
+            {/* <div>
             <AreaChart width={600} height={250} data={[...runsData, ...runsData2, ...runsData3]}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
@@ -81,7 +80,6 @@ export default function RobotRecharts() {
               <Tooltip />
               <Area type="monotone" dataKey="area" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
             </AreaChart>
-            {/*  */}
             </div>
             <AreaChart
               width={500}
@@ -113,8 +111,8 @@ export default function RobotRecharts() {
                 dataKey="Success Rate"
               />
               <Legend iconSize={10} layout="vertical" verticalAlign="middle" />
-            </RadialBarChart>
-          </div>
+            </RadialBarChart>*/}
+            </div>
         </div>
     </>
   )
