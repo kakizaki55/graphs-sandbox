@@ -14,17 +14,16 @@ function App() {
     <div className="App" 
     // style={{display: 'flex', flexWrap: 'normal', margin:'auto', padding: '20px'}}
     >
-      {/* <h1>hello world</h1> */}
-      {/* <div style={{display: 'flex', gap: '10px'}}>
-        <RobotHighCharts/>
+      <h1>hello world</h1> 
+      <div style={{display: 'flex', gap: '10px'}}>
+        {/* <RobotHighCharts/> */}
         <RobotChart />
-        <RobotApexCharts />
+        {/* <RobotApexCharts /> */}
         <RobotRecharts/>
-        <RobotECharts /> 
-        {/* <RobotVisx/> */}
-        {/* <RobotFusionCharts/> */}
-      {/* </div>  */}
-      <CustomSignIn/>
+        {/* <RobotECharts /> 
+        <RobotFusionCharts/> */}
+      </div> 
+      {/* <CustomSignIn/> */}
     </div>
   );  
 }
