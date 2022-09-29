@@ -12,6 +12,8 @@ const data = robots.map((robot) => {
   }
 })
 
+console.log('data', data)
+
 const { runs } = RobotRunDetails 
 
 
