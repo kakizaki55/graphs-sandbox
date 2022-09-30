@@ -1,6 +1,7 @@
 import React from "react";
-
+import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
+import { BarGraph } from "./Bargraph";
 
 const mockdata = () => [
   {
@@ -30,6 +31,12 @@ describe("Recharts", () => {
       it('test to see if the component renders correctly', () => {
         const data = mockdata()
         const size = { width: 500, height: 1000 };
+
+        const { container } = render(< BarGraph data={data} />)
+
+        console.log('screen', screen)
+
+        
 
         expect(true).toBe(true)
       })

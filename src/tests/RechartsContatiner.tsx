@@ -1,6 +1,6 @@
 import React from 'react'
 import robots from '../mockdata/robotsData';
-import { Bargraph } from './Bargraph';
+import { BarGraph } from './Bargraph';
 
 const data = robots.map((robot) => { 
   return {
@@ -19,7 +19,7 @@ export default function RobotRecharts() {
   return (
     <>
         <div style={{display:'flex' , flexDirection:'column', width: '600px'}}>
-          <Bargraph data={data}></Bargraph>
+          <BarGraph data={data}></BarGraph>
         </div>
     </>
   )
