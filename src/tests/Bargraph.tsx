@@ -6,7 +6,7 @@ interface BarGraphProps {
 }
 
 
-export const BarGraph = ({ data }:BarGraphProps) => {
+const BarGraph = ({ data }:BarGraphProps) => {
   return (
   <>
     <div>Bargraph</div>
@@ -22,3 +22,5 @@ export const BarGraph = ({ data }:BarGraphProps) => {
     </BarChart>
   </>
   )}
+
+  export default BarGraph
