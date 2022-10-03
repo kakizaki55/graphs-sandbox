@@ -5,7 +5,6 @@ import RobotRecharts from './components/Recharts.tsx';
 import RobotHighCharts from './components/HighCharts.tsx'
 import RobotECharts from './components/ECharts.tsx';
 import RobotFusionCharts from './components/FusionCharts.tsx'
-import CustomSignIn from './SignIn/index.tsx'
 
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
         <RobotRecharts/>
         {/* <RobotECharts /> 
         <RobotFusionCharts/> */}
-      </div> 
+      </div> ß
       {/* <CustomSignIn/> */}
     </div>
   );  
