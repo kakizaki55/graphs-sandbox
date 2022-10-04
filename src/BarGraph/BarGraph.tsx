@@ -10,7 +10,7 @@ const BarGraph = ({ data }:BarGraphProps) => {
   return (
   <>
     <div>Bargraph</div>
-    <BarChart width={600} height={300} data={data}>
+    <BarChart width={800} height={300} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
