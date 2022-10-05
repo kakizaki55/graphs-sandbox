@@ -3,6 +3,7 @@ import '@testing-library/jest-dom'
 import { waitFor, render, screen } from "@testing-library/react"
 import  BarGraph from "./BarGraph";
 import { wait } from "@testing-library/user-event/dist/utils";
+// @ts-nocheck
 
 const mockdata = () => [
   {
@@ -38,35 +39,54 @@ const mockdata = () => [
 
 ]
 
+
 describe("Recharts", () => {
     describe("testing out Recharts BarCharts data display for 3 robots", () => {
       
       it('test to see if the component renders correctly', async () => {
         const data = mockdata()
         const size = { width: 500, height: 1000 };
+            
+            const { container } = render(<BarGraph data={data} size={size} />)
+            
+            // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+            const svgWrapper = container.querySelector('[class="recharts-surface"]')
+            console.log('attributes', svgWrapper?.attributes)
 
-        const { container } = render(<BarGraph data={data} />)
+            const attributes = svgWrapper?.attributes
         
 
-        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-        const svgEl = container.querySelector('[class="recharts-cartesian-grid-horizontal"]') as HTMLImageElement
+            // expect(attributes).toContain({
+            //     "class": "recharts-surface", 
+            //     "height": "1000", 
+            //     "version": "1.1", 
+            //     "viewBox": "0 0 500 1000", 
+            //     "width": "500"})
 
-        expect(svgEl).toBeInTheDocument()
-        // eslint-disable-next-line testing-library/no-node-access
-        console.log('svgEl', svgEl)
+            expect(attributes?.['height'].value).toEqual("1000")
+            expect(attributes?.['width'].value).toEqual("500")
+
+
+
+                // {
+                //     "class": "recharts-surface", 
+                //     "height": "1000", 
+                //     "version": "1.1", 
+                //     "viewBox": "0 0 500 1000", 
+                //     "width": "500"
+                // }
+
+        // // expect(svgEl).toBeInTheDocument()
+        // // eslint-disable-next-line testing-library/no-node-access
+        // console.log('svgEl', svgEl)
         
 
-        expect(screen.getByText('don_eb2_83')).toBeInTheDocument()
-        expect(screen.getByText('don_eb2_87')).toBeInTheDocument()
-        expect(screen.getByText('Success Rate')).toBeInTheDocument()
+        // expect(screen.getByText('don_eb2_83')).toBeInTheDocument()
+        // expect(screen.getByText('don_eb2_87')).toBeInTheDocument()
+        // expect(screen.getByText('Success Rate')).toBeInTheDocument()
 
         // eslint-disable-next-line testing-library/no-debugging-utils
-        screen.debug()
-
-
-
-
-
+        // screen.debug()
     })
   })
 })

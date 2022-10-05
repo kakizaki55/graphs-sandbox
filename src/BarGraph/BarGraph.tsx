@@ -2,15 +2,16 @@ import React from 'react'
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar } from 'recharts';
 
 interface BarGraphProps {
-  data?: any
+  data?: any,
+  size?: any
 }
 
 
-const BarGraph = ({ data }:BarGraphProps) => {
+const BarGraph = ({ data, size }:BarGraphProps) => {
   return (
   <>
     <div>Bargraph</div>
-    <BarChart width={800} height={300} data={data}>
+    <BarChart width={size.width} height={size.height} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
