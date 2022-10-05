@@ -29,19 +29,12 @@ const mockdata = () => [
       "Success Rate": 100,
       "distance from home traveled": 86.2,
       "Total run time": 58.4
-  },
-  {
-      "name": "don_eb2_87",
-      "Success Rate": 95,
-      "distance from home traveled": 100.2,
-      "Total run time": 58.4
-  },
-
+  }
 ]
 
 
 describe("Recharts", () => {
-    describe("testing out Recharts BarCharts data display for 3 robots", () => {
+    describe("testing out Recharts BarCharts data display for 4 robots", () => {
       
       it('test to see if the component renders correctly', async () => {
         const data = mockdata()
@@ -54,38 +47,15 @@ describe("Recharts", () => {
             console.log('attributes', svgWrapper?.attributes)
 
             const attributes = svgWrapper?.attributes
-        
-
-            // expect(attributes).toContain({
-            //     "class": "recharts-surface", 
-            //     "height": "1000", 
-            //     "version": "1.1", 
-            //     "viewBox": "0 0 500 1000", 
-            //     "width": "500"})
 
             expect(attributes?.['height'].value).toEqual("1000")
             expect(attributes?.['width'].value).toEqual("500")
 
+            expect(screen.getByText('Success Rate')).toBeInTheDocument()
+            expect(screen.getByText('don_eb2_88')).toBeInTheDocument()
+            expect(screen.getByText('don_eb2_84')).toBeInTheDocument()
 
 
-                // {
-                //     "class": "recharts-surface", 
-                //     "height": "1000", 
-                //     "version": "1.1", 
-                //     "viewBox": "0 0 500 1000", 
-                //     "width": "500"
-                // }
-
-        // // expect(svgEl).toBeInTheDocument()
-        // // eslint-disable-next-line testing-library/no-node-access
-        // console.log('svgEl', svgEl)
-        
-
-        // expect(screen.getByText('don_eb2_83')).toBeInTheDocument()
-        // expect(screen.getByText('don_eb2_87')).toBeInTheDocument()
-        // expect(screen.getByText('Success Rate')).toBeInTheDocument()
-
-        // eslint-disable-next-line testing-library/no-debugging-utils
         // screen.debug()
     })
   })
