@@ -35,12 +35,7 @@ const mockdata = () => [
       "distance from home traveled": 100.2,
       "Total run time": 58.4
   },
-  {
-      "name": "don_eb2_86",
-      "Success Rate": 100,
-      "distance from home traveled": 200.2,
-      "Total run time": 120.4
-  }
+
 ]
 
 describe("Recharts", () => {
@@ -53,12 +48,16 @@ describe("Recharts", () => {
         const { container } = render(<BarGraph data={data} />)
         
 
-        const svgBar = screen
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        const svgEl = container.querySelector('[class="recharts-cartesian-grid-horizontal"]') as HTMLImageElement
 
+        expect(svgEl).toBeInTheDocument()
+        // eslint-disable-next-line testing-library/no-node-access
+        console.log('svgEl', svgEl)
         
 
         expect(screen.getByText('don_eb2_83')).toBeInTheDocument()
-        expect(screen.getByText('don_eb2_86')).toBeInTheDocument()
+        expect(screen.getByText('don_eb2_87')).toBeInTheDocument()
         expect(screen.getByText('Success Rate')).toBeInTheDocument()
 
         // eslint-disable-next-line testing-library/no-debugging-utils
