@@ -56,7 +56,7 @@ export default function RobotRecharts() {
   return (
     <>
         <div style={{display:'flex' , flexDirection:'column', width: '800px'}}>
-          <BarGraph data={mockdata}></BarGraph>
+          <BarGraph data={mockdata} size={{ width:1000, height: 500}}></BarGraph>
         </div>
     </>
   )

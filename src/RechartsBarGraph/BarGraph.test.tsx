@@ -38,7 +38,7 @@ describe("Recharts", () => {
       
       it('test to see if the component renders correctly', async () => {
         const data = mockdata()
-        const size = { width: 500, height: 1000 };
+        const size = { width: 1000, height: 500 };
             
             const { container } = render(<BarGraph data={data} size={size} />)
             
@@ -48,15 +48,16 @@ describe("Recharts", () => {
 
             const attributes = svgWrapper?.attributes
 
-            expect(attributes?.['height'].value).toEqual("1000")
-            expect(attributes?.['width'].value).toEqual("500")
+            expect(attributes?.['height'].value).toEqual("500")
+            expect(attributes?.['width'].value).toEqual("1000")
 
             expect(screen.getByText('Success Rate')).toBeInTheDocument()
             expect(screen.getByText('don_eb2_88')).toBeInTheDocument()
             expect(screen.getByText('don_eb2_84')).toBeInTheDocument()
 
 
-        // screen.debug()
+         // eslint-disable-next-line testing-library/no-debugging-utils
+        //  screen.debug()
     })
   })
 })

@@ -1,12 +1,12 @@
 import React from 'react'
 import 'chart.js/auto';
-import { Bar, Line, Doughnut, PolarArea, Radar } from 'react-chartjs-2';
 import robots from '../mockdata/robotsData.js';
 import RobotRunDetails from '../mockdata/robotRuns.js'
+import BarGraph from './Chart.tsx';
 
 
 
-const RobotChart = () => {
+const ChartJSContainer = () => {
 
   const robotsData = {
     labels: robots.map((robot) => robot.robotName), 
@@ -53,31 +53,31 @@ const RobotChart = () => {
   }
   
 
-const robotsRunData = {
-    labels: RobotRunDetails.runs.map((run) => Object.keys(run.coverageAreaTimeData)).filter(onlyUnique), 
-    datasets: RobotRunDetails.runs.map((run) => {
-        return {
-            label: run.id,
-            data: run.coverageAreaTimeData, 
-            backgroundColor: [
-                '#690BB4',
-            ],
-        }
-     })
-}
+// const robotsRunData = {
+//     labels: RobotRunDetails.runs.map((run) => Object.keys(run.coverageAreaTimeData)).filter(onlyUnique), 
+//     datasets: RobotRunDetails.runs.map((run) => {
+//         return {
+//             label: run.id,
+//             data: run.coverageAreaTimeData, 
+//             backgroundColor: [
+//                 '#690BB4',
+//             ],
+//         }
+//      })
+// }
 
 
   return (  
-      <div style={{width: '600px'}}>
+      <div style={{width: '600px', display: 'block'}}>
         <div>Chart.js</div>
-            <Bar data={robotsData} ></Bar>
-            <Line data={robotsRunData}></Line>
+            <BarGraph data={robotsData} size={{width: 1000, height: 500}} ></BarGraph>
+            {/* <Line data={robotsRunData}></Line>
             <Line data={robotsData}></Line>
             <Doughnut data={robotsData}></Doughnut>
             <PolarArea data={robotsData}></PolarArea>
-            <Radar data={robotsData}></Radar>
+            <Radar data={robotsData}></Radar> */}
     </div>
   )
 }
 
-export default RobotChart
+export default ChartJSContainer

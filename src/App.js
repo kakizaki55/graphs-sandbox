@@ -1,8 +1,9 @@
 import './App.css';
-import RobotChart from './components/Chart.tsx';
+import RobotChart from './ChartJSBarGraph/Chart.tsx';
 import RobotRecharts from './components/Recharts.tsx';
 
-import RechartsContainer from './BarGraph/RechartsContainer.tsx'
+import RechartsContainer from './RechartsBarGraph/RechartsContainer.tsx'
+import ChartJSContainer from './ChartJSBarGraph/ChartJSContainer.tsx'
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <h1>hello world</h1> 
       <div style={{display: 'flex', gap: '10px'}}>
         <RechartsContainer/>
+        <ChartJSContainer/>
       </div> 
     </div>
   );  
