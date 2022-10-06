@@ -4,11 +4,15 @@ import { Bar } from 'react-chartjs-2';
 
 interface BarGraphProps {
     data: any
-    size: any
+    size?: any
+}
+
+const styles={
+  backGroudColor: '#32a0a8'
 }
 
 
-const BarGraph = ({data , size}: BarGraphProps) => {
+const BarGraph = ({data , size={width: 1000, height: 500}}: BarGraphProps) => {
   
   return (  
       <div style={{ 
@@ -16,7 +20,7 @@ const BarGraph = ({data , size}: BarGraphProps) => {
         height: size.height 
         }}>
         <div>Chart.js</div>
-            <Bar data={data} ></Bar>
+            <Bar data={{...data, ...styles}} ></Bar>
     </div>
   )
 }

@@ -1,8 +1,7 @@
 import React from "react";
 import '@testing-library/jest-dom'
-import { waitFor, render, screen } from "@testing-library/react"
+import {  render, screen } from "@testing-library/react"
 import  BarGraph from "./BarGraph";
-import { wait } from "@testing-library/user-event/dist/utils";
 // @ts-nocheck
 
 const mockdata = () => [
@@ -44,8 +43,6 @@ describe("Recharts", () => {
             
             // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
             const svgWrapper = container.querySelector('[class="recharts-surface"]')
-            console.log('attributes', svgWrapper?.attributes)
-
             const attributes = svgWrapper?.attributes
 
             expect(attributes?.['height'].value).toEqual("500")
