@@ -1,5 +1,5 @@
 import React from 'react'
-import 'chart.js/auto';
+// import 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 
 interface BarGraphProps {
@@ -13,6 +13,7 @@ const styles={
 
 
 const BarGraph = ({data , size={width: 1000, height: 500}}: BarGraphProps) => {
+
   
   return (  
       <div style={{ 

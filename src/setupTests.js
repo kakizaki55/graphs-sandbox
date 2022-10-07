@@ -4,3 +4,8 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 global.ResizeObserver = require('resize-observer-polyfill')
+
+
+jest.mock('chart.js', () => ({
+    Chart: () => null
+  }));

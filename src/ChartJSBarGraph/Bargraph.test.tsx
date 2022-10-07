@@ -5,26 +5,27 @@ import  BarGraph from "./BarGraph";
 import robotsDataFormatted from "./data"
 import 'jest-canvas-mock';
 // @ts-nocheck
+window.ResizeObserver =
+window.ResizeObserver ||
+jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+}));
 
 describe('BarGraph', () => {
     describe('testing to make sure barGraph displays the correct values', () => {
-
-        // let canvas, ctx;
-        // beforeEach(function() {
-        //     canvas = document.createElement('canvas');
-        //     ctx = canvas.getContext('2d');
-        //     jest.mock('use-resize-observer', () => {
-        //         return jest.requireActual('use-resize-observer/polyfilled');
-    
-        //     })
-        // });
-        
         it('should sure barGraph displays the correct values', () => {
+            
+            const parser = new DOMParser()
             
 
             const { container } = render(<BarGraph data={robotsDataFormatted}/>)
             
-            const canvasWrapper = screen.getByRole('img') 
+            const canvasWrapper: HTMLCanvasElement = screen.getByRole('img')
+            console.log('canvasWrapper', canvasWrapper.getContext("2d"))
+            console.log('datasetr', parser.parseFromString(canvasWrapper.dataset.toString(),"text/html"))
+            // const ctx = canvasWrapper.getContext()
             expect(true).toBe(true)
             
             // eslint-disable-next-line testing-library/no-debugging-utils
