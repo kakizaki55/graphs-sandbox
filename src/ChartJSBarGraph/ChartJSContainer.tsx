@@ -2,8 +2,8 @@ import React from 'react'
 import 'chart.js/auto';
 import robots from '../mockdata/robotsData.js';
 
-import BarGraph from './BarGraph.tsx';
-import robotsDataFormatted from './data.js';
+import BarGraph from './BarGraph';
+import robotsDataFormatted from './data';
 
 
 

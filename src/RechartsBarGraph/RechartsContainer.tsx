@@ -1,6 +1,6 @@
 import React from 'react'
 import robots from '../mockdata/robotsData';
-import BarGraph from './BarGraph.tsx'
+import BarGraph from './BarGraph'
 
 const data = robots.map((robot) => { 
   return {

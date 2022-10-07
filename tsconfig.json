@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
       "jsx": "react",
       "jsx": "react",
       "lib": [
         "es2017",
         "DOM"
       ],
-    "types": ["resize-observer-browser"],
+    "types": ["resize-observer-browser", "node"],
     }
 } 

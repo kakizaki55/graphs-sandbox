@@ -5,6 +5,7 @@
   "dependencies": {
     "@amcharts/amcharts5": "^5.2.21",
     "@aws-amplify/ui-react": "^3.5.4",
+    "@babel/polyfill": "^7.12.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.6",

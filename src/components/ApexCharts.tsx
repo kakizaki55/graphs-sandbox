@@ -2,6 +2,8 @@ import React from 'react'
 import ReactApexChart from "react-apexcharts";
 import robots from '../mockdata/robotsData';
 import RobotRunDetails from '../mockdata/robotRuns';
+
+// @ts-nocheck
 const RobotApexCharts = () => {
 
   const chartData = {
@@ -99,7 +101,7 @@ const RobotApexCharts = () => {
         type="line" />
       <ReactApexChart 
         options={chartData2.options} 
-        series={chartData2.series} 
+
         type="line" />
   </div>
   )
