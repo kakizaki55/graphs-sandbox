@@ -7,5 +7,6 @@ global.ResizeObserver = require('resize-observer-polyfill')
 
 
 jest.mock('chart.js', () => ({
-    Chart: () => null
+    Chart: () => null,
+    Bar: () => null
   }));

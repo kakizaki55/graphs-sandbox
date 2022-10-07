@@ -16,12 +16,14 @@ const BarGraph = ({data , size={width: 1000, height: 500}}: BarGraphProps) => {
 
   
   return (  
-      <div style={{ 
-        width: size.width, 
-        height: size.height 
-        }}>
+      <div >
         <div>Chart.js</div>
-            <Bar data={{...data, ...styles}} ></Bar>
+          <div style={{ 
+              width: size.width, 
+              height: size.height 
+              }}>
+            <Bar data={{...data}} ></Bar>
+          </div>
     </div>
   )
 }

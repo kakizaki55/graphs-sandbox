@@ -18,14 +18,20 @@ describe('BarGraph', () => {
         it('should sure barGraph displays the correct values', () => {
             
             const parser = new DOMParser()
+
+            const size = {width: 1000, height: 500}
             
 
-            const { container } = render(<BarGraph data={robotsDataFormatted}/>)
+            const { container } = render(<BarGraph data={robotsDataFormatted} size={size} />)
             
             const canvasWrapper: HTMLCanvasElement = screen.getByRole('img')
-            console.log('canvasWrapper', canvasWrapper.getContext("2d"))
-            console.log('datasetr', parser.parseFromString(canvasWrapper.dataset.toString(),"text/html"))
+            // console.log('canvasWrapper', canvasWrapper.getContext("2d").__getEvents())
+            // console.log('datasetr', parser.parseFromString(canvasWrapper.dataset.toString(),"text/html"))
             // const ctx = canvasWrapper.getContext()
+            const context = canvasWrapper.getContext('2d')
+            console.log('S1', context.getContextAttributes())
+
+            expect(canvasWrapper).toMatchSnapshot()
             expect(true).toBe(true)
             
             // eslint-disable-next-line testing-library/no-debugging-utils

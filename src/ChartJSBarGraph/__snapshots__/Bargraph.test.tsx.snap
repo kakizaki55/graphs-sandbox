@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BarGraph testing to make sure barGraph displays the correct values should sure barGraph displays the correct values 1`] = `
+<canvas
+  height="0"
+  role="img"
+  style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+  width="0"
+/>
+`;
