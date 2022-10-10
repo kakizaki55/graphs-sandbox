@@ -1,6 +1,7 @@
 import React from 'react'
 import robots from '../mockdata/robotsData';
 import BarGraph from './BarGraph'
+import CustomBarGraph from './CustomBarChart';
 
 const data = robots.map((robot) => { 
   return {
@@ -57,6 +58,7 @@ export default function RobotRecharts() {
     <>
         <div style={{display:'flex' , flexDirection:'column', width: '800px'}}>
           <BarGraph data={mockdata} size={{ width:1000, height: 500}}></BarGraph>
+          <CustomBarGraph data={mockdata} size={{ width:1000, height: 500}}/>
         </div>
     </>
   )
