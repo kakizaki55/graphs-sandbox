@@ -17,10 +17,10 @@ const CustomBarGraph = ({ data, size }:BarGraphProps) => {
       <CartesianGrid horizontal={false} vertical={false} />
       <XAxis dataKey="name" />
       <YAxis dataKey= "Total run time"/>
-      <Tooltip cursor={{ stroke: 'pink', strokeWidth: 1  }}  />
+      <Tooltip cursor={{ stroke: '#430098', strokeWidth: 1  }}  />
       <Legend />
       <Bar dataKey="Success Rate" fill="#ba58e3" fillOpacity={.2} />
-      <Bar dataKey="distance from home traveled" fill="#430098"fillOpacity={.8} >
+      <Bar dataKey="distance from home traveled" fill="#430098"fillOpacity={.8} background={false} >
         <LabelList  dataKey="distance from home traveled" position="top"></LabelList>
       </Bar>
       <Bar dataKey="Total run time" fill="#00dbde" fillOpacity={.5}  />

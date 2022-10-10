@@ -2,8 +2,9 @@ import React from "react";
 import '@testing-library/jest-dom'
 import {  render, screen } from "@testing-library/react"
 import  BarGraph from "./BarGraph";
-import robotsDataFormatted from "./data"
+import { robotsDataFormatted }from "./data"
 import 'jest-canvas-mock';
+
 // @ts-nocheck
 window.ResizeObserver =
 window.ResizeObserver ||

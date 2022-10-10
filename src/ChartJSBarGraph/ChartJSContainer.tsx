@@ -3,7 +3,9 @@ import 'chart.js/auto';
 import robots from '../mockdata/robotsData.js';
 
 import BarGraph from './BarGraph';
-import robotsDataFormatted from './data';
+import CustomBarGraph from './CustomBarChart';
+import  {robotsDataFormatted, customRobotsDataFormatted} from './data';
+
 
 
 
@@ -27,9 +29,10 @@ const ChartJSContainer = () => {
 //      })
 // }
   return (  
-      <div style={{width: '600px', display: 'flex'}}>
+      <div style={{width: '600px', display: 'flex',flexDirection: 'column'}}>
         <div>Chart.js</div>
             <BarGraph data={robotsDataFormatted} size={{width: 1000, height: 500}} ></BarGraph>
+            <CustomBarGraph data={customRobotsDataFormatted} size={{width: 1000, height: 500}} ></CustomBarGraph>
             {/* <Line data={robotsRunData}></Line>
             <Line data={robotsData}></Line>
             <Doughnut data={robotsData}></Doughnut>
